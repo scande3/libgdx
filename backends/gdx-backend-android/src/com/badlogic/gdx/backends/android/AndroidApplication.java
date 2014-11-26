@@ -260,6 +260,10 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 
 	@Override
 	protected void onPause () {
+		super.onPause();
+	}
+	
+	protected void fauxPause() {
 		boolean isContinuous = graphics.isContinuousRendering();
 		graphics.setContinuousRendering(true);
 		graphics.pause();
@@ -273,8 +277,6 @@ public class AndroidApplication extends Activity implements AndroidApplicationBa
 		graphics.setContinuousRendering(isContinuous);
 
 		graphics.onPauseGLSurfaceView();
-
-		super.onPause();
 	}
 
 	@Override
